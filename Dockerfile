@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-MAINTAINER Marcelo Gonçalves <marcelocg@gmail.com>
+MAINTAINER Steven Livingstone-Perez <steven@livz.org> 
 
 # Elixir requires UTF-8
 RUN locale-gen en_US.UTF-8
@@ -20,10 +20,10 @@ RUN wget http://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb \
 RUN apt-get install -y erlang erlang-ssl erlang-inets && rm erlang-solutions_1.0_all.deb
 
 # install elixir from source
-RUN git clone https://github.com/elixir-lang/elixir.git && cd elixir && git checkout v1.0.5 && make
+RUN git clone https://github.com/elixir-lang/elixir.git && cd elixir && git checkout v1.1.0 && make
 ENV PATH $PATH:/elixir/bin
 
-ENV PHOENIX_VERSION 1.0.0
+ENV PHOENIX_VERSION 1.1.0
 
 # install Phoenix from source with some previous requirements
 RUN git clone https://github.com/phoenixframework/phoenix.git \
@@ -41,8 +41,8 @@ RUN git clone https://github.com/phoenixframework/phoenix.git \
 # gpg: aka "Julien Gilli <jgilli@fastmail.fm>"
 RUN gpg --keyserver pool.sks-keyservers.net --recv-keys 7937DFD2AB06298B2293C3187D33FF9D0246406D 114F43EE0176B71C7BC219DD50A3051F888C628D
 
-ENV NODE_VERSION 0.12.7
-ENV NPM_VERSION 2.12.0
+ENV NODE_VERSION 4.1.0
+ENV NPM_VERSION 2.14.3
 
 RUN curl -SLO "http://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" \
  && curl -SLO "http://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
