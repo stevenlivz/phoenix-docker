@@ -8,5 +8,6 @@ Phoenix is a framework for building scalable web applications with realtime conn
 
 ### How to use this image
 
-    docker run -it --rm -v "$PWD":/code -w /phoenix marcelocg/phoenix mix phoenix.new /code/my_new_app
-
+    cd phoenix-docker
+    docker build .
+    docker run -p 80:4000 <INSERT_CONTAINER_ID> /bin/sh -c 'mix phoenix.server' 
